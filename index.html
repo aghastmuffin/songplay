@@ -1,4 +1,98 @@
 <!DOCTYPE html>
-<title> Access Denied </title>
-<tt> Access Denied </tt>
-<p> Running version 0.1 BETA </p>
+<title> Song gussr </title>
+<h1> Song guesser - Guess the song!</h1>
+<textarea id="guess_s"></textarea> <br> 
+<tt id="score">404 score not found</tt> <br><br>
+<button id="lns" onclick="playnewsong()">Load new song</button> <br>
+<button id="guess" onclick="guess()">Guess</button> <br>
+<script>
+var playing = 0;
+var score = 0;
+var guessed = 0;
+var song = "my_sleep_schedule_is_fucked.mp3";
+var audio = new Audio();
+document.getElementById("score").innerHTML = score;
+//eventually use cookies for keeping score (as page is reloaded frequently)
+
+function playnewsong(){
+console.log(playing)
+if (playing == 0){ 
+    guessed = 0;
+    console.log("start playing song")
+    playing++;
+//    var songnum = Math.floor((Math.random() * 10) + 1);
+    var songnum = 1;
+    if (songnum == 1) {
+        song = "my_sleep_schedule_is_fucked.mp3";
+        songname = "my sleep schedule is fucked";
+        songartist = "Derivakat"
+    }
+    //play audio selected earlier
+//    var audio = new Audio(song);
+    audio = new Audio(song);
+    audio.play();
+    audio.loop = false;
+    playing--;
+    }
+console.log("done playing song");
+//open text box
+//<textarea id="answer">Guess</textarea>
+}
+function guess(){
+if (guessed == 0){
+    guessed++;
+    //disable onclick until page reload
+    document.getElementById("lns").onclick = "";
+    var guess_s = document.getElementById("guess_s").value;
+    console.log("guess: ", guess_s);
+    if (guess_s === songname){
+        score++;
+        audio.pause()
+        alert("Guess correct!")
+    }
+    else{
+        alert("Guess incorrect")
+    }
+    document.getElementById("score").innerHTML = score;
+/*    try{
+    console.log("(reload)")
+    window.location.reload();
+    }
+    catch{
+        console.error("an error occured")
+    } */
+    
+}
+else{
+    alert("you cant guess the same song twice!")
+    playnewsong();
+}
+} 
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<tt>running 0.4</tt>
