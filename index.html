@@ -9,7 +9,9 @@
 var playing = 0;
 var score = 0;
 var guessed = 0;
+let cscore = document.cookie;
 var song = "my_sleep_schedule_is_fucked.mp3";
+score = cscore;
 var audio = new Audio();
 document.getElementById("score").innerHTML = score;
 //eventually use cookies for keeping score (as page is reloaded frequently)
@@ -46,7 +48,9 @@ if (guessed == 0){
     var guess_s = document.getElementById("guess_s").value;
     console.log("guess: ", guess_s);
     if (guess_s === songname){
+        
         score++;
+        document.cookie("score=",score)
         audio.pause()
         alert("Guess correct!")
     }
